@@ -17,17 +17,7 @@ export ZSH="/Users/iwashita/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-#ZSH_THEME="agnoster"
-#ZSH_THEME="cobalt2"
 ZSH_THEME="refined"
-#ZSH_THEME="pygmalion"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -120,16 +110,10 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$HOME/bin:$PATH # コメントアウト
 source ~/.bash_profile
 
-# rbenv関係
-# rbenvのパスを通す
-export PATH="$HOME/.rbenv/bin:$PATH"
-# rbenvを初期化
-eval "$(rbenv init -)"
-
 # TexLive 2021
 export PATH="/usr/local/texlive/2022/bin/universal-darwin:$PATH"
 
-#brew-perl
+# brew-perl
 eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
 if [ "$(uname -m)" = "arm64" ]; then
@@ -172,28 +156,20 @@ export CPPFLAGS="-I$(brew --prefix openssl@1.1)/include"
 export PKG_CONFIG_PATH="$(brew --prefix openssl@1.1)/lib/pkgconfig"
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
-export PATH="/opt/homebrew/opt/openjdk@11/bin:$PATH"
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
 export PATH=$ANDROID_HOME/bib:$PATH
 
 # GEM
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 
-# asdf
-. "$HOME/.asdf/asdf.sh"
-
 # fvm
 export PATH="$PATH":"$HOME/fvm/default/bin"
 
 # dart
 export PATH="$PATH":"$HOME/.pub-cache/bin"
-
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-# initialise completions with ZSH's compinit
-autoload -Uz compinit && compinit
-
 
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 export LDFLAGS="-L/opt/homebrew/opt/readline/lib"
@@ -222,3 +198,37 @@ if [ -f '/Users/iwashita/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/
 # jenv
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/iwashita/.cache/lm-studio/bin"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/iwashita/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/iwashita/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/Users/iwashita/miniforge3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/iwashita/miniforge3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/Users/iwashita/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/Users/iwashita/miniforge3/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
+eval "$(mise activate zsh)"
+
+# Xcodes
+XCODES_USERNAME="yiwashita.cu@gmail.com"
+
+# Added by Windsurf
+export PATH="/Users/iwashita/.codeium/windsurf/bin:$PATH"
+
+# Claude
+alias claude-aff='CLAUDE_CONFIG_DIR=~/.claude-aff claude'
