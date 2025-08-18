@@ -1,39 +1,18 @@
-# zsh-completions
-if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-fi
-
-# If you come from bash you might have to change your $PATH
+export PATH=$HOME/bin:$PATH
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 
-# Path to your oh-my-zsh installation.
+# oh-my-zsh
 export ZSH="/Users/iwashita/.oh-my-zsh"
-
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="eastwood"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
+ZSH_THEME="alanpeabody"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+DISABLE_AUTO_UPDATE="true"
 plugins=(
 	git
 	zsh-autosuggestions
 )
-
-source $ZSH/oh-my-zsh.sh
-
-export PATH=$HOME/bin:$PATH # コメントアウト
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+source "$ZSH/oh-my-zsh.sh"
 
 # TexLive 2021
 export PATH="/usr/local/texlive/2022/bin/universal-darwin:$PATH"
@@ -48,55 +27,48 @@ else
   eval "$(/usr/local/bin/brew shellenv)"
 fi
 
-# nodebrew
-export PATH=$HOME/.nodebrew/current/bin:$PATH
-
-# homebrew packages
-if [ "$(uname -m)" = "arm64" ]; then
-  export PATH="/opt/homebrew/Cellar/:$PATH"
-else
-  export PATH="/usr/local/Cellar/:$PATH"
-fi
-
+# alias
 # iterm
 alias change_profile='(){echo -e "\033]1337;SetProfile=$1\a"}'
 
 if [ "$(uname -m)" = "arm64" ]; then
   # arm64
+	# homebrew	
+  export PATH="/opt/homebrew/Cellar/:$PATH"
+
+	# iterm
   change_profile ARM
 else
   # x86_64
-  change_profile Intel
+	# homebrew	
+  export PATH="/usr/local/Cellar/:$PATH"
+  
+	# iterm
+	change_profile Intel
 fi
-
-# nodeenv
-eval "$(nodenv init -)"
 
 export PATH="/opt/homebrew/opt/openssl@3/bin:$PATH"
 
+# ruby
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 export RUBY_CFLAGS="-w"
 export PATH="$(brew --prefix openssl@1.1)/bin:$PATH"
 export LDFLAGS="-L$(brew --prefix openssl@1.1)/lib"
 export CPPFLAGS="-I$(brew --prefix openssl@1.1)/include"
 export PKG_CONFIG_PATH="$(brew --prefix openssl@1.1)/lib/pkgconfig"
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 export ANDROID_HOME=$HOME/Library/Android/sdk
 export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools
-export PATH=$ANDROID_HOME/bib:$PATH
+export PATH=$ANDROID_HOME/bin:$PATH
 
 # GEM
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
 
-# fvm
-export PATH="$PATH":"$HOME/fvm/default/bin"
-
 # dart
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 export LDFLAGS="-L/opt/homebrew/opt/readline/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/readline/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/readline/lib/pkgconfig"
@@ -110,23 +82,18 @@ export PATH="$PATH:$(go env GOPATH)/bin"
 
 ## [Completion]
 ## Completion scripts setup. Remove the following line to uninstall
-[[ -f /Users/iwashita/.dart-cli-completion/zsh-config.zsh ]] && . /Users/iwashita/.dart-cli-completion/zsh-config.zsh || true
+[[ -f "$HOME/.dart-cli-completion/zsh-config.zsh" ]] && . "$HOME/.dart-cli-completion/zsh-config.zsh" || true
 ## [/Completion]
 
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/iwashita/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/iwashita/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/google-cloud-sdk/path.zsh.inc"; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/iwashita/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/iwashita/google-cloud-sdk/completion.zsh.inc'; fi
-
-# jenv
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-
+if [ -f "$HOME/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/google-cloud-sdk/completion.zsh.inc"; fi
 
 # Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/iwashita/.cache/lm-studio/bin"
+export PATH="$PATH:$HOME/.cache/lm-studio/bin"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -152,9 +119,6 @@ eval "$(mise activate zsh)"
 # Xcodes
 XCODES_USERNAME="yiwashita.cu@gmail.com"
 
-# Added by Windsurf
-export PATH="/Users/iwashita/.codeium/windsurf/bin:$PATH"
-
 # Claude
 alias claude-aff='CLAUDE_CONFIG_DIR=~/.claude-aff claude'
 alias claude-imlab='CLAUDE_CONFIG_DIR=~/.claude-imlab claude'
@@ -165,3 +129,9 @@ export RSTUDIO_WHICH_R=/opt/homebrew/bin/R
 
 # libpq
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
+
+if (which zprof > /dev/null 2>&1) ;then
+  zprof
+fi
+
