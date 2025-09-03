@@ -1,5 +1,6 @@
 tap "bufbuild/buf"
 tap "dart-lang/dart"
+tap "gromgit/fuse"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "leoafarias/fvm"
@@ -66,7 +67,6 @@ brew "node@16"
 brew "numpy"
 brew "oath-toolkit"
 brew "protobuf"
-brew "openvino"
 brew "qt"
 brew "pyqt"
 brew "vtk"
@@ -75,6 +75,7 @@ brew "openjdk"
 brew "openjdk@11"
 brew "openjdk@17"
 brew "openssl@1.1"
+brew "openvino"
 brew "peco"
 brew "perl"
 brew "php"
@@ -92,6 +93,7 @@ brew "yarn"
 brew "zsh"
 brew "zsh-completions"
 brew "bufbuild/buf/buf"
+brew "gromgit/fuse/sshfs-mac"
 brew "sass/sass/sass"
 brew "xcodesorg/made/xcodes"
 cask "1password-cli"
@@ -106,7 +108,6 @@ cask "cursor"
 cask "darktable"
 cask "dbeaver-community"
 cask "deepl"
-cask "displaylink"
 cask "docker-desktop"
 cask "dozer"
 cask "drawio"
@@ -116,11 +117,10 @@ cask "github-copilot-for-xcode"
 cask "google-chrome"
 cask "imaging-edge"
 cask "inkscape"
-cask "insomnia"
 cask "itsycal"
 cask "libreoffice"
 cask "lm-studio"
-cask "meetingbar"
+cask "macfuse"
 cask "micro-sniff"
 cask "microsoft-auto-update"
 cask "microsoft-office"
@@ -137,6 +137,27 @@ cask "whatsapp"
 cask "whisky"
 cask "xquartz"
 cask "zerotier-one"
+mas "Apple Configurator", id: 1037126344
+mas "Blackmagic Disk Speed Test", id: 425264550
+mas "Developer", id: 640199958
+mas "Focus", id: 777233759
+mas "GarageBand", id: 682658836
+mas "Grammarly for Safari", id: 1462114288
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "LadioCast", id: 411213048
+mas "LINE", id: 539883307
+mas "Mattermost", id: 1614666244
+mas "Menu World Time", id: 1446377255
+mas "Microsoft To Do", id: 1274495053
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "RunCat", id: 1429033973
+mas "Swift Playground", id: 1496833156
+mas "TestFlight", id: 899247664
+mas "Toggl Track", id: 1291898086
+mas "Transporter", id: 1450874784
+mas "WireGuard", id: 1451685025
 vscode "alefragnani.project-manager"
 vscode "alexcvzz.vscode-sqlite"
 vscode "anthropic.claude-code"
@@ -159,6 +180,7 @@ vscode "donjayamanne.python-environment-manager"
 vscode "donjayamanne.python-extension-pack"
 vscode "dracula-theme.theme-dracula"
 vscode "dsznajder.es7-react-js-snippets"
+vscode "eamodio.gitlens"
 vscode "ecmel.vscode-html-css"
 vscode "emmanuelbeziat.vscode-great-icons"
 vscode "enkia.tokyo-night"
