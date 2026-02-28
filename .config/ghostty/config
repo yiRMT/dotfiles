@@ -5,10 +5,10 @@ font-feature = -calt
 
 adjust-cell-height = 0%
 
-theme = 0x96f
+theme = Xcode Dark hc
 
-background-opacity = 0.90
-background-blur-radius = 0
+background-opacity = 0.92
+background-blur-radius = 10
 
 window-padding-x = 10
 window-padding-y = 10
@@ -39,3 +39,5 @@ keybind = ctrl+g=toggle_quick_terminal
 
 quick-terminal-position = top
 quick-terminal-screen = main
+term = xterm-256color
+unfocused-split-opacity = 0.5
