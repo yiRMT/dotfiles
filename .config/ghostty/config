@@ -1,6 +1,7 @@
 font-size = 14
 font-thicken = true
-font-family = "Moralerspace Neon HW"
+# font-family = "Moralerspace Neon HW"
+font-family = "SF Mono"
 font-feature = -calt
 
 adjust-cell-height = 0%
