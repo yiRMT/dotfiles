@@ -25,6 +25,7 @@ plugins=(
 	git
 	zsh-autosuggestions
 )
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#9ca1b2"
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 source "$ZSH/oh-my-zsh.sh"
 

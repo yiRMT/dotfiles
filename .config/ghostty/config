@@ -2,14 +2,16 @@ font-size = 14
 font-thicken = true
 # font-family = "Moralerspace Neon HW"
 font-family = "SF Mono"
+font-family = "Biz UDGothic"
 font-feature = -calt
+font-feature = -dlig
 
 adjust-cell-height = 0%
 
-theme = Xcode Dark hc
+theme = TokyoNight
 
-background-opacity = 0.92
-background-blur-radius = 10
+background-opacity = 0.8
+background-blur-radius = 5
 
 window-padding-x = 10
 window-padding-y = 10
@@ -37,6 +39,7 @@ keybind = cmd+shift+up=resize_split:up,20
 keybind = cmd+shift+down=resize_split:down,20
 keybind = cmd+w=close_surface
 keybind = ctrl+g=toggle_quick_terminal
+keybind = global:ctrl+i=toggle_visibility
 
 quick-terminal-position = top
 quick-terminal-screen = main
